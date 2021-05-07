@@ -1,10 +1,4 @@
-﻿using OpenQA.Selenium;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NUnit.Framework;
 
 namespace ShopCartPageObject.tests
 {
@@ -14,6 +8,7 @@ namespace ShopCartPageObject.tests
         [Test]
         public void CanAddRemoveItems()
         {
+            app.OpenMainPage();
             for (int i = 0; i < 3; i++)
             {
                 app.AddItemsToCart();

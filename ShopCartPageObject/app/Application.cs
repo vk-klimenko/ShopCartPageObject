@@ -1,6 +1,8 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
 using ShopCartPageObject.pages;
+using System;
 
 namespace ShopCartPageObject.app
 {
@@ -13,6 +15,7 @@ namespace ShopCartPageObject.app
 
         public Application()
         {
+            //driver = new FirefoxDriver();
             driver = new ChromeDriver();
             mainPage = new MainShopPage(driver);
             productPage = new ProductPage(driver);
@@ -22,14 +25,9 @@ namespace ShopCartPageObject.app
 
         internal void AddItemsToCart()
         {
-            mainPage.Open();
             mainPage.OpenProduct();
-            productPage
-                .SubmitAddItem()
-                .BackToMainPage();
-            mainPage.GetQuantityProduct();
-           
-            
+            productPage.SubmitAddItem();
+            productPage.BackToMainPage();
         }
 
         internal void RemoveItemsToCart()
@@ -38,9 +36,14 @@ namespace ShopCartPageObject.app
             cartProduct
                 .StopCarousel()
                 .SubmitRemoveItem();
+            OpenMainPage();
         }
 
-
+        public void OpenMainPage()
+        {
+            driver.Url = "http://litecart/";
+            
+        }
         public void Quit()
         {
             driver.Quit();

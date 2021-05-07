@@ -1,11 +1,7 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Support.UI;
+using OpenQA.Selenium.Support.PageObjects;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ShopCartPageObject.pages
 {
@@ -20,19 +16,7 @@ namespace ShopCartPageObject.pages
         internal IWebElement CartLink;
         [FindsBy(How = How.CssSelector, Using = "#box-most-popular li a.link")]
         internal IWebElement ProductFirstItem;
-        [FindsBy(How = How.CssSelector, Using = "#cart span.quantity")]
-        internal IWebElement ProductQuantity;
         
-
-        /// <summary>
-        /// Open main page
-        /// </summary>
-        /// <returns></returns>
-        internal void Open()
-        {
-            driver.Url = baseUrl;
-        }
-
         /// <summary>
         /// Open cart shop
         /// </summary>
@@ -40,6 +24,7 @@ namespace ShopCartPageObject.pages
         internal void OpenCart()
         {
             driver.Url = CartLink.GetAttribute("href").Trim();
+            wait.Until(ExpectedConditions.TitleIs("Checkout | My Store"));
         }
 
 
@@ -49,16 +34,11 @@ namespace ShopCartPageObject.pages
         /// <returns></returns>
         internal void OpenProduct()
         {
+            wait.Until(ExpectedConditions.ElementToBeClickable(ProductFirstItem));
             ProductFirstItem.Click();
         }
 
 
-        internal MainShopPage GetQuantityProduct()
-        {
-            string value = (int.Parse(ProductQuantity.GetAttribute("textContent")) + 1).ToString();
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
-            wait.Until(dr => ProductQuantity.GetAttribute("textContent").Equals(value));
-            return this;
-        }
+        
     }
 }

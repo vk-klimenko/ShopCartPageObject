@@ -1,11 +1,6 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Support.PageObjects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using OpenQA.Selenium.Support.UI;
 
 namespace ShopCartPageObject.pages
 {
@@ -21,8 +16,9 @@ namespace ShopCartPageObject.pages
         internal IWebElement BtnAddToCart;
         [FindsBy(How = How.Name, Using = "options[Size]")]
         internal IWebElement DropDown;
+        [FindsBy(How = How.CssSelector, Using = "#cart span.quantity")]
+        internal IWebElement ProductQuantity;
 
-       
         /// <summary>
         /// Back to home page
         /// </summary>
@@ -30,6 +26,7 @@ namespace ShopCartPageObject.pages
         internal void BackToMainPage()
         {
             driver.Url = baseUrl;
+            wait.Until(ExpectedConditions.TitleIs("Online Store | My Store"));
         }
 
 
@@ -37,16 +34,27 @@ namespace ShopCartPageObject.pages
         /// Add item to cart shop
         /// </summary>
         /// <returns></returns>
-        internal ProductPage SubmitAddItem()
+        internal void SubmitAddItem()
         {
+            int quantity = (int.Parse(ProductQuantity.GetAttribute("textContent")));
+
             if (driver.FindElements(By.Name("options[Size]")).Count > 0)
             {
-                new SelectElement(DropDown).SelectByIndex(rnd.Next(1, 4));
+                new SelectElement(DropDown).SelectByIndex(1);
             }
             BtnAddToCart.Click();
-            return this;
+
+            wait.Until(driver => GetQuantityValue(quantity));
         }
 
-       
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        private bool GetQuantityValue(int value)
+        {
+            return wait.Until(driver => ProductQuantity.GetAttribute("textContent").Equals((value + 1).ToString()));
+        }
     }
 }

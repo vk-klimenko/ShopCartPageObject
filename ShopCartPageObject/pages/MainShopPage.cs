@@ -16,7 +16,7 @@ namespace ShopCartPageObject.pages
         internal IWebElement CartLink;
         [FindsBy(How = How.CssSelector, Using = "#box-most-popular li a.link")]
         internal IWebElement ProductFirstItem;
-        
+
         /// <summary>
         /// Open cart shop
         /// </summary>

@@ -55,12 +55,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="app\Application.cs" />
+    <Compile Include="pages\AdminPanelCountriesPage.cs" />
+    <Compile Include="pages\AdminPanelLoginPage.cs" />
+    <Compile Include="pages\AdminPanelMainPage.cs" />
     <Compile Include="pages\CartProductPage.cs" />
+    <Compile Include="pages\CategoriesPage.cs" />
     <Compile Include="pages\MainShopPage.cs" />
     <Compile Include="pages\Page.cs" />
     <Compile Include="pages\ProductPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="tests\AdminLoginTests.cs" />
+    <Compile Include="tests\AdminPanelCountriesGeoZoneTests.cs" />
+    <Compile Include="tests\AdminPanelSelectLeftMenuTests.cs" />
     <Compile Include="tests\CartShopTests.cs" />
+    <Compile Include="tests\MainShopStickerTests.cs" />
     <Compile Include="tests\TestBase.cs" />
   </ItemGroup>
   <ItemGroup>

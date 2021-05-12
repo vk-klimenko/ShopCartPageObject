@@ -15,12 +15,20 @@ namespace ShopCartPageObject.tests
          * 2) на странице http://localhost/litecart/admin/?app=geo_zones&doc=geo_zones
          * зайти в каждую из стран и проверить, что зоны расположены в алфавитном порядке*/
 
+        //1
         [Test]
         public void CanCountriesSort()
         {
             app.AdminLoginPanel("admin", "admin");
             app.CheckCountriesSort();
 
+        }
+        //2
+        [Test]
+        public void CanGeoZoneSort()
+        {
+            app.AdminLoginPanel("admin", "admin");
+            app.CheckGeoZoneSort();
         }
     }
 }

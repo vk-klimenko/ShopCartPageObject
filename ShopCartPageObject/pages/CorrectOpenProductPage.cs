@@ -23,7 +23,8 @@ namespace ShopCartPageObject.pages
         [FindsBy(How = How.CssSelector, Using = "#box-campaigns strong.campaign-price")]
         internal IWebElement CampaignPrice;
 
-
+        [FindsBy(How = How.CssSelector, Using = "#box-campaigns a.link")]
+        internal IWebElement LinkCard;
         [FindsBy(How = How.CssSelector, Using = "#box-product h1.title")]
         internal IWebElement NameCard;
         [FindsBy(How = How.CssSelector, Using = "#box-product s.regular-price")]
@@ -31,29 +32,44 @@ namespace ShopCartPageObject.pages
         [FindsBy(How = How.CssSelector, Using = "#box-product strong.campaign-price")]
         internal IWebElement CampaignPriceCard;
 
-        //internal string GetAttribute_TextContent(IWebElement el)
-        //{
-        //    return el.GetAttribute("textContent").Trim();
-        //}
-
+        /// <summary>
+        /// Получить CSS значение: цвет элемента Color
+        /// </summary>
+        /// <param name="el">IWebElement element</param>
+        /// <returns></returns>
         internal string GetCssValue_Color(IWebElement el)
         {
             return el.GetCssValue("color").Replace("rgba(", "").TrimEnd(')');
         }
 
+        /// <summary>
+        /// Получить CSS значение: размер шрифта элемента Font Size
+        /// </summary>
+        /// <param name="el">IWebElement element</param>
+        /// <returns></returns>
         internal string GetCssValue_FontSize(IWebElement el)
         {
             return el.GetCssValue("font-size").Replace("px", "").Replace(".", ",").Trim();
         }
 
-        internal string GetCssLineThrough_Price(IWebElement el)
+        /// <summary>
+        /// Получить CSS значение: перечеркнутый элемент Line Through
+        /// </summary>
+        /// <param name="el">IWebElement element</param>
+        /// <returns></returns>
+        internal string GetCssValue_LineThrough(IWebElement el)
         {
             return el.GetCssValue("text-decoration-line").Trim();
         }
 
-        internal string GetCssFontWeighth_CampaignPrice()
+        /// <summary>
+        /// Получить CSS значение: Font Weighth
+        /// </summary>
+        /// <param name="el">IWebElement element</param>
+        /// <returns></returns>
+        internal string GetCssValue_FontWeighth(IWebElement el)
         {
-            return CampaignPrice.GetCssValue("text-decoration-line").Trim();
+            return el.GetCssValue("font-weight").Trim();
         }
 
         

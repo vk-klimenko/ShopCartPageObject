@@ -56,6 +56,8 @@
   <ItemGroup>
     <Compile Include="app\Application.cs" />
     <Compile Include="data\CustomersData.cs" />
+    <Compile Include="data\ProductsData.cs" />
+    <Compile Include="pages\AddNewProductPage.cs" />
     <Compile Include="pages\AdminPanelCountriesPage.cs" />
     <Compile Include="pages\AdminPanelGeoZonePage.cs" />
     <Compile Include="pages\AdminPanelLoginPage.cs" />
@@ -68,6 +70,7 @@
     <Compile Include="pages\ProductPage.cs" />
     <Compile Include="pages\RegistrationPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="tests\AddProductTests.cs" />
     <Compile Include="tests\AdminLoginTests.cs" />
     <Compile Include="tests\AdminPanelCountriesGeoZoneTests.cs" />
     <Compile Include="tests\AdminPanelSelectLeftMenuTests.cs" />

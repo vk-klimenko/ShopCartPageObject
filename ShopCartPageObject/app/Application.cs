@@ -22,6 +22,7 @@ namespace ShopCartPageObject.app
         private AdminPanelGeoZonePage geozonePage;
         private CorrectOpenProductPage correctOpen;
         private RegistrationPage registrationPage;
+        private AddNewProductPage addProduct;
 
         public Application()
         {
@@ -37,12 +38,24 @@ namespace ShopCartPageObject.app
             geozonePage = new AdminPanelGeoZonePage(driver);
             correctOpen = new CorrectOpenProductPage(driver);
             registrationPage = new RegistrationPage(driver);
+            addProduct = new AddNewProductPage(driver);
         }
         public void Quit()
         {
             driver.Quit();
             driver = null;
         }
+
+        public void OpenMainPage()
+        {
+            driver.Url = "http://litecart/";
+        }
+        public void OpenPage(string url)
+        {
+            driver.Url = url;
+        }
+
+
         /// <summary>
         /// Добавить товары в корзину
         /// </summary>
@@ -65,14 +78,6 @@ namespace ShopCartPageObject.app
             OpenMainPage();
         }
 
-        public void OpenMainPage()
-        {
-            driver.Url = "http://litecart/";
-        }
-        public void OpenPage(string url)
-        {
-            driver.Url = url;
-        }
         
         /// <summary>
         /// Авторизация в админ панель
@@ -260,6 +265,53 @@ namespace ShopCartPageObject.app
                 .LoginButton.Click();
 
             registrationPage.Logout();
+
+        }
+
+        /// <summary>
+        /// Добавление товара
+        /// </summary>
+        public void AddNewProduct(ProductsData product)
+        {
+            adminPanel.OpenAdminPage();
+            adminPanel
+                .EntryUserName("admin")
+                .EntryUserPass("admin")
+                .SubmitLogin();
+
+            addProduct.CatalogLink.Click();
+            addProduct.AddNewProductButton.Click();
+
+            addProduct.Status.Click();
+            addProduct.NameInput.SendKeys(product.Name);
+            addProduct.CodeInput.SendKeys(product.Code);
+            addProduct.Categories.Click();
+            addProduct.ProductGroups.Click();
+            addProduct.QuantityGeneralTab(product.Quantity);
+            addProduct.QuantityUnitGeneralTab();
+            addProduct.DeliveryStatusGeneralTab();
+            addProduct.SoldOutStatusGeneralTab();
+            addProduct.UploadImages.SendKeys(product.ImagePath);
+            addProduct.DateValidFrom(product.DateFrom);
+            addProduct.DateValidTo(product.DateTo);
+
+            addProduct.InformationTab.Click();
+            addProduct.ManufacturerInformationTab();
+            addProduct.KeywordsInput.SendKeys(product.Keywords);
+            addProduct.ShortDescriptionInput.SendKeys(product.ShortDescription);
+            addProduct.DescriptionInput.SendKeys(product.Description);
+            addProduct.HeadTitleInput.SendKeys(product.HeadTitle);
+            addProduct.MetaDescriptionInput.SendKeys(product.MetaDescription);
+
+            addProduct.PricesTab.Click();
+            addProduct.PurchasePricePricesTab(product.PurchasePrice);
+            addProduct.PurchaseCurrencyPricesTab();
+            addProduct.CampaignsLink.Click();
+            addProduct.CampaignsStartDate(product.DateFrom);
+            addProduct.CampaignsEndDate(product.DateTo);
+            addProduct.CampaignsPercentage();
+            addProduct.SaveButton.Click();
+
 
         }
 

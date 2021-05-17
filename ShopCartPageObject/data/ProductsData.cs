@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,15 +25,16 @@ namespace ShopCartPageObject.data
 
 
 
-        public ProductsData(string name)
+        public ProductsData(string name, string path)
         {
             Name = name;
+            ImagePath = GetImagePath(path);
             Code = GetCodeProduct();
             Quantity = GetQuantity();
             string tm = GetRandomDate();
             DateFrom = tm.Split(':')[0];
             DateTo = tm.Split(':')[1];
-            Keywords = "Keyword1 Keyword2 Keyword3 Keyword4 Keyword5 Keyword6";
+            Keywords = "Key1 Key2 Key3";
             ShortDescription = "Short description about product";
             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
             HeadTitle = "Head title";
@@ -59,6 +61,11 @@ namespace ShopCartPageObject.data
         private string GetRandomPurchasePrice()
         {
             return Convert.ToString(new Random().Next(1, 500));
+        }
+
+        private string GetImagePath(string path)
+        {
+            return Path.GetFullPath(path);
         }
     }
 }

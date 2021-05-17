@@ -279,8 +279,8 @@ namespace ShopCartPageObject.app
                 .EntryUserPass("admin")
                 .SubmitLogin();
 
-            addProduct.CatalogLink.Click();
-            addProduct.AddNewProductButton.Click();
+            addProduct.OpenCatalog();
+            addProduct.OpenAddNewProduct();
 
             addProduct.Status.Click();
             addProduct.NameInput.SendKeys(product.Name);
@@ -306,10 +306,14 @@ namespace ShopCartPageObject.app
             addProduct.PricesTab.Click();
             addProduct.PurchasePricePricesTab(product.PurchasePrice);
             addProduct.PurchaseCurrencyPricesTab();
+            string usd = addProduct.SetPriceUSDTab();
+            string eur = addProduct.SetPriceEURTab();
             addProduct.CampaignsLink.Click();
             addProduct.CampaignsStartDate(product.DateFrom);
             addProduct.CampaignsEndDate(product.DateTo);
             addProduct.CampaignsPercentage();
+            addProduct.CampaignsUSD(usd);
+            addProduct.CampaignsEUR(eur);
             addProduct.SaveButton.Click();
 
 

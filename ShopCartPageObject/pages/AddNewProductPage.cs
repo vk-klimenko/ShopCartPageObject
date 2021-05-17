@@ -15,20 +15,17 @@ namespace ShopCartPageObject.pages
         }
 
         [FindsBy(How = How.XPath, Using = ".//li[@id='app-']/a/*[text()='Catalog']")]
-        internal IWebElement CatalogLink;
+        IWebElement CatalogLink;
         internal void OpenCatalog()
         {
-            wait.Until(ExpectedConditions.TextToBePresentInElement(CatalogLink, "Catalog"));
+            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(".//li[@id='app-']/a/*[text()='Catalog']")));
             CatalogLink.Click();
+            wait.Until(d => d.FindElement(By.ClassName("button")));
         }
 
         [FindsBy(How = How.XPath, Using = ".//a[@class='button' and text()=' Add New Product']")]
         internal IWebElement AddNewProductButton;
-        internal void OpenAddNewProduct()
-        {
-            ///wait.Until(ExpectedConditions.ElementIsVisible(By.Name("button")));
-            AddNewProductButton.Click();
-        }
+        
 
         [FindsBy(How = How.XPath, Using = ".//ul[@class='index']//a[text()='General']")]
         internal IWebElement GeneralTab;
@@ -66,7 +63,12 @@ namespace ShopCartPageObject.pages
         internal IWebElement PriceEUR;
 
         [FindsBy(How = How.XPath, Using = ".//button[@name='save']")]
-        internal IWebElement SaveButton;
+        IWebElement SaveButton;
+        internal void Save()
+        {
+            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(".//button[@name='save']")));
+            SaveButton.Click();
+        }
 
         #region GeneralTabMethods
         internal void QuantityGeneralTab(string value)

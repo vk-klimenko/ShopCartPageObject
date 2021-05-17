@@ -20,7 +20,7 @@ namespace ShopCartPageObject.tests
         [Test]
         public void CanAddProduct()
         {
-            ProductsData product = new ProductsData("Sony", @"\image.png");
+            ProductsData product = new ProductsData("Book", @"\image.png");
             app.AddNewProduct(product);
         }
     }

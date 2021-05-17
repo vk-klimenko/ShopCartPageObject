@@ -280,7 +280,7 @@ namespace ShopCartPageObject.app
                 .SubmitLogin();
 
             addProduct.OpenCatalog();
-            addProduct.OpenAddNewProduct();
+            addProduct.AddNewProductButton.Click();
 
             addProduct.Status.Click();
             addProduct.NameInput.SendKeys(product.Name);
@@ -314,7 +314,8 @@ namespace ShopCartPageObject.app
             addProduct.CampaignsPercentage();
             addProduct.CampaignsUSD(usd);
             addProduct.CampaignsEUR(eur);
-            addProduct.SaveButton.Click();
+
+            addProduct.Save();
 
 
         }

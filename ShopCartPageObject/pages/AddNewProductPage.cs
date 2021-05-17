@@ -25,8 +25,6 @@ namespace ShopCartPageObject.pages
 
         [FindsBy(How = How.XPath, Using = ".//a[@class='button' and text()=' Add New Product']")]
         internal IWebElement AddNewProductButton;
-        
-
         [FindsBy(How = How.XPath, Using = ".//ul[@class='index']//a[text()='General']")]
         internal IWebElement GeneralTab;
         [FindsBy(How = How.XPath, Using = ".//ul[@class='index']//a[text()='Information']")]
@@ -66,7 +64,7 @@ namespace ShopCartPageObject.pages
         IWebElement SaveButton;
         internal void Save()
         {
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(".//button[@name='save']")));
+            wait.Until(d => d.FindElement(By.ClassName("button-set")));
             SaveButton.Click();
         }
 

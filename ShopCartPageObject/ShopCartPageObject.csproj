@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="app\Application.cs" />
+    <Compile Include="data\CountryData.cs" />
     <Compile Include="data\CustomersData.cs" />
     <Compile Include="data\ProductsData.cs" />
     <Compile Include="pages\AddNewProductPage.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="pages\CartProductPage.cs" />
     <Compile Include="pages\CategoriesPage.cs" />
     <Compile Include="pages\CorrectOpenProductPage.cs" />
+    <Compile Include="pages\CountriesPage.cs" />
     <Compile Include="pages\MainShopPage.cs" />
     <Compile Include="pages\Page.cs" />
     <Compile Include="pages\ProductPage.cs" />
@@ -76,6 +78,7 @@
     <Compile Include="tests\AdminPanelSelectLeftMenuTests.cs" />
     <Compile Include="tests\CartShopTests.cs" />
     <Compile Include="tests\CorrectOpenProductPageTests.cs" />
+    <Compile Include="tests\LinksOpenNewWindowsTests.cs" />
     <Compile Include="tests\MainShopStickerTests.cs" />
     <Compile Include="tests\RegistrationCustomerTests.cs" />
     <Compile Include="tests\TestBase.cs" />

@@ -23,6 +23,7 @@ namespace ShopCartPageObject.app
         private CorrectOpenProductPage correctOpen;
         private RegistrationPage registrationPage;
         private AddNewProductPage addProduct;
+        private CountriesPage countriesLinkPage;
 
         public Application()
         {
@@ -39,6 +40,7 @@ namespace ShopCartPageObject.app
             correctOpen = new CorrectOpenProductPage(driver);
             registrationPage = new RegistrationPage(driver);
             addProduct = new AddNewProductPage(driver);
+            countriesLinkPage = new CountriesPage(driver);
         }
         public void Quit()
         {
@@ -316,9 +318,37 @@ namespace ShopCartPageObject.app
             addProduct.CampaignsEUR(eur);
 
             addProduct.Save();
-
-
         }
+
+        /// <summary>
+        /// Открыть ссылку в новом окне
+        /// </summary>
+        public void OpenLinkInNewWindow(CountryData country)
+        {
+            adminPanel.OpenAdminPage();
+            adminPanel
+                .EntryUserName("admin")
+                .EntryUserPass("admin")
+                .SubmitLogin();
+
+            countriesLinkPage.OpenCountry(country.Code);
+
+            string mainIdWindow = countriesLinkPage.GetIdCurrentWindow();
+            IList<string> ExistIdWindows = countriesLinkPage.GetIdWindowsTab();
+
+            foreach (string link in countriesLinkPage.GetLinks())
+            {
+                countriesLinkPage.OpenWindowTab();
+                string newId = countriesLinkPage.GetNewWindow(ExistIdWindows);
+                countriesLinkPage.GoToWindowTab(newId);
+                Assert.IsTrue(countriesLinkPage.GetIdCurrentWindow() == newId);
+
+                countriesLinkPage.OpenLink(link);
+                countriesLinkPage.CloseWindow();
+                countriesLinkPage.GoToWindowTab(mainIdWindow);
+            }
+        }
+
 
     }
 }

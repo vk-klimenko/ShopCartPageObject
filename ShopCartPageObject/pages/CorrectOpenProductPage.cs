@@ -12,7 +12,6 @@ namespace ShopCartPageObject.pages
     {
         public CorrectOpenProductPage(IWebDriver driver):base(driver)
         {
-            this.driver = driver;
             PageFactory.InitElements(driver, this);
         }
 

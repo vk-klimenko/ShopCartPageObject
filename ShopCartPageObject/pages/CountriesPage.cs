@@ -12,7 +12,6 @@ namespace ShopCartPageObject.pages
     {
         public CountriesPage(IWebDriver driver):base(driver)
         {
-            this.driver = driver;
             PageFactory.InitElements(driver, this);
         }
         [FindsBy(How = How.CssSelector, Using = "#content tr a[target='_blank']")]

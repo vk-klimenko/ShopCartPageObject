@@ -10,7 +10,6 @@ namespace ShopCartPageObject.pages
     {
         public AddNewProductPage(IWebDriver driver):base(driver)
         {
-            this.driver = driver;
             PageFactory.InitElements(driver, this);
         }
 

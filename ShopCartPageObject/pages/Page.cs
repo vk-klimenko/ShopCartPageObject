@@ -6,10 +6,10 @@ namespace ShopCartPageObject.pages
 {
     internal class Page
     {
-        protected IWebDriver driver;
-        protected WebDriverWait wait;
-        protected Random rnd;
-        protected string baseUrl = "http://litecart/";
+        internal IWebDriver driver;
+        internal WebDriverWait wait;
+        internal Random rnd;
+        internal string baseUrl = "http://litecart/";
 
         public Page(IWebDriver driver)
         {

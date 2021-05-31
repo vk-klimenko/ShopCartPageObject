@@ -77,7 +77,7 @@ namespace ShopCartPageObject.app
             cartProduct
                 .StopCarousel()
                 .SubmitRemoveItem();
-            OpenMainPage();
+            mainPage.OpenMainPage();
         }
 
         

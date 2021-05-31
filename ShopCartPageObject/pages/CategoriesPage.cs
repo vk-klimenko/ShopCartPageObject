@@ -12,7 +12,6 @@ namespace ShopCartPageObject.pages
     {
         public CategoriesPage(IWebDriver driver) : base(driver)
         {
-            this.driver = driver;
             PageFactory.InitElements(driver, this);
         }
         [FindsBy(How = How.CssSelector, Using = "ul.products")]

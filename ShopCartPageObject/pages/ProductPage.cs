@@ -13,11 +13,11 @@ namespace ShopCartPageObject.pages
         }
 
         [FindsBy(How = How.Name, Using = "add_cart_product")]
-        internal IWebElement BtnAddToCart;
+        IWebElement BtnAddToCart;
         [FindsBy(How = How.Name, Using = "options[Size]")]
-        internal IWebElement DropDown;
+        IWebElement DropDown;
         [FindsBy(How = How.CssSelector, Using = "#cart span.quantity")]
-        internal IWebElement ProductQuantity;
+        IWebElement ProductQuantity;
 
         /// <summary>
         /// Back to home page

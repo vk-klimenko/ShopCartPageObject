@@ -13,10 +13,16 @@ namespace ShopCartPageObject.pages
         }
 
         [FindsBy(How = How.CssSelector, Using = "#cart a.link")]
-        internal IWebElement CartLink;
+        IWebElement CartLink;
         [FindsBy(How = How.CssSelector, Using = "#box-most-popular li a.link")]
-        internal IWebElement ProductFirstItem;
-
+        IWebElement ProductFirstItem;
+        /// <summary>
+        /// Open main page
+        /// </summary>
+        internal void OpenMainPage()
+        {
+            driver.Url = "http://litecart/";
+        }
         /// <summary>
         /// Open cart shop
         /// </summary>

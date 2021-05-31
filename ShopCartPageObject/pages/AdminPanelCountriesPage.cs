@@ -11,17 +11,16 @@ namespace ShopCartPageObject.pages
 {
     internal class AdminPanelCountriesPage:Page
     {
-        public List<string> Countries = new List<string>();
-        public List<string> ByZones = new List<string>();
+        internal List<string> Countries = new List<string>();
+        internal List<string> ByZones = new List<string>();
         public AdminPanelCountriesPage(IWebDriver driver):base(driver)
         {
-            this.driver = driver;
             PageFactory.InitElements(driver,this);
         }
         [FindsBy(How = How.CssSelector, Using = "td:nth-child(6n)")]
         IWebElement Zone { get; set; }
         
-        public void OpenAdminCountriesPage()
+        internal void OpenAdminCountriesPage()
         {
             driver.Url = "http://litecart/admin/?app=countries&doc=countries";
             wait.Until(ExpectedConditions.TitleIs("Countries | My Store"));
@@ -62,7 +61,7 @@ namespace ShopCartPageObject.pages
         }
 
         /// <summary>
-        /// ПОлучить кол-во зон в стране
+        /// Получить кол-во зон в стране
         /// </summary>
         /// <returns></returns>
         internal int GetZoneCount()
